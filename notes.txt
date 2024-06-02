@@ -1,0 +1,5 @@
+setting up react project using vite
+
+
+npm create vite <project_name>
+

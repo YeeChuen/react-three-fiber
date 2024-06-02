@@ -1,0 +1,63 @@
+Common library to use with three.js on React
+
+react-three fiber
+`npm install three @react-three/fiber`
+
+drei library
+`npm install @react-three/drei`
+
+/* 
+block below: 
+  <Canvas>
+    <mesh>
+      <boxGeometry />
+      <meshStandardMaterial />
+    </mesh>
+  </Canvas>
+
+is equivalent to:
+  const scene = new THREE.Scene()
+  const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000)
+
+  const renderer = new THREE.WebGLRenderer()
+  renderer.setSize(width, height)
+  document.querySelector('#canvas-container').appendChild(renderer.domElement)
+
+  const mesh = new THREE.Mesh()
+  mesh.geometry = new THREE.BoxGeometry()
+  mesh.material = new THREE.MeshStandardMaterial()
+
+  scene.add(mesh)
+
+  function animate() {
+    requestAnimationFrame(animate)
+    renderer.render(scene, camera)
+  }
+
+  animate()
+
+Three js component:
+  <Canvas/>                 : sets up Scene and Camera, automatic renders our scene every frame
+  <mesh/>                   : basic scene object in three.js, and it's used to hold the geometry and the material
+  <BoxGeometry/>            : geometry shape
+  <meshStandardMaterial/>   : geometry material
+
+  -> adding lights
+  <ambientLight/>           : equivalent to --> const light = new THREE.AmbientLight()
+  <directionalLight/>       : equivalent to --> const light = new THREE.DirectionalLight()
+
+to do animation,
+we need to use a custom hook from three.js:
+  useFrame: need to be wrap in a function, and the function needs to be wrap inside Canvas component.
+    example:
+      function Foo() {
+        useFrame((state, delta, xrFrame) => {
+          // This function runs at the native refresh rate
+        })
+      }
+
+      <Canvas>
+        <Foo/>
+      </Canvas>
+  
+*/
